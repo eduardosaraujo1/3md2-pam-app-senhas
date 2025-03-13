@@ -1,39 +1,73 @@
-import { Button, Text, SafeAreaView, StyleSheet, View, ScrollView } from 'react-native';
+import { Text, SafeAreaView, StyleSheet, View, ScrollView } from "react-native";
+import StyledButton from "./components/StyledButton";
 
 export default function App() {
+    return (
+        <SafeAreaView style={styles.container}>
+            <View style={{ paddingInline: 8 }}>
+                <View style={{ flexDirection: "row", gap: 16 }}>
+                    <StyledButton buttonStyle={styles.button} textStyle={styles.buttonText}>
+                        Normal
+                    </StyledButton>
+                    <StyledButton buttonStyle={styles.button} textStyle={styles.buttonText}>
+                        Prioritário
+                    </StyledButton>
+                    <StyledButton buttonStyle={styles.button} textStyle={styles.buttonText}>
+                        Alta Prioridade
+                    </StyledButton>
+                </View>
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={{paddingInline:8}}>
-        <View style={{flexDirection:'row',gap:4}}>
-          <View style={{flex:1}}>
-            <Button title="Normal" color="#4ea72e" />
-          </View>
-          <View style={{flex:1}}>
-            <Button title="Prioritário" color="#4ea72e" />
-          </View>
-          <View style={{flex:1}}>
-            <Button title="Alta Prioridade" color="#4ea72e" />
-          </View>
-        </View>
-        <View>
-          <Text style={{fontWeight:700,fontSize:24}}>Senhas</Text>
-          <ScrollView style={{padding:6}}>
-            <Text>N01</Text>
-            <Text>P01</Text>
-            <Text>AP01</Text>
-          </ScrollView>
-        </View>
-      </View>
-    </SafeAreaView>
-  );
+                {/* Lista de Senhas */}
+                <View
+                    style={{
+                        backgroundColor: "lightgray",
+
+                        maxHeight: 400,
+                        marginTop: 16,
+                    }}
+                >
+                    <Text
+                        style={{
+                            textAlign: "center",
+                            fontSize: 36,
+                            fontWeight: 700,
+                        }}
+                    >
+                        Senhas
+                    </Text>
+                    <ScrollView style={{ padding: 8 }}>
+                        <Text style={styles.passwordItem}>N01</Text>
+                        <Text style={styles.passwordItem}>P01</Text>
+                        <Text style={styles.passwordItem}>AP01</Text>
+                        <Text style={styles.passwordItem}>N01</Text>
+                        <Text style={styles.passwordItem}>P01</Text>
+                        <Text style={styles.passwordItem}>AP01</Text>
+                        <Text style={styles.passwordItem}>N01</Text>
+                        <Text style={styles.passwordItem}>P01</Text>
+                    </ScrollView>
+                </View>
+            </View>
+        </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
-    padding: 8
-  },
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        backgroundColor: "#ecf0f1",
+        padding: 8,
+    },
+    button: {
+        flex: 1,
+        paddingBlock: 64,
+        backgroundColor: "#4ea72e",
+        borderWidth: 2.5,
+    },
+    buttonText: {
+        fontSize: 24,
+    },
+    passwordItem: {
+        fontSize: 24,
+    },
 });
