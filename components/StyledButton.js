@@ -1,23 +1,15 @@
 import { Pressable, Text, StyleSheet } from "react-native";
 
-function StyledButton({
-    onPress = () => {},
-    buttonStyle = {},
-    textStyle = {},
-    children,
-    ...props
-}) {
+function StyledButton({ onPress = () => {}, buttonStyle = {}, textStyle = {}, children, ...props }) {
     return (
         <Pressable
             onPress={onPress}
-            style={({ pressed }) => [
-                styles.button,
-                buttonStyle,
-                pressed && { opacity: 0.9, transform: [{ scale: 0.95 }] },
-            ]}
+            style={({ pressed }) => [styles.button, buttonStyle, pressed && styles.pressed]}
             {...props}
         >
-            <Text style={[styles.text, textStyle]}>{children}</Text>
+            <Text style={[styles.text, textStyle]} selectable={false}>
+                {children}
+            </Text>
         </Pressable>
     );
 }
@@ -36,7 +28,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
     pressed: {
-        opacity: 0.7,
+        opacity: 0.9,
         transform: [{ scale: 0.95 }],
     },
 });
